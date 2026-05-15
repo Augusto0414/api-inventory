@@ -1,14 +1,12 @@
 package com.practicas.ia_api.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.validator.constraints.UUID;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "warehouses")
@@ -17,10 +15,10 @@ import org.hibernate.validator.constraints.UUID;
 @NoArgsConstructor
 public class Warehouse {
     @Id
-    @UUID
     @UuidGenerator
+    @GeneratedValue(generator = "UUID")
     @Column(name = "id", updatable = false, nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;

@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.validator.constraints.UUID;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "stocks")
@@ -14,10 +15,10 @@ import org.hibernate.validator.constraints.UUID;
 @NoArgsConstructor
 public class Stock {
     @Id
-    @UUID
     @UuidGenerator
+    @GeneratedValue(generator = "UUID")
     @Column(name = "id", updatable = false, nullable = false)
-    private String id;
+    private UUID id;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
