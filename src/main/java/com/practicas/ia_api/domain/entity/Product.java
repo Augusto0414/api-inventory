@@ -32,7 +32,7 @@ public class Product {
     private double price;
 
     @Column(name = "sku", nullable = false, unique = true)
-    private String sku;
+    private Integer sku;
 
     @Column(name = "category")
     private String category;
