@@ -1,14 +1,16 @@
 package com.practicas.ia_api.domain.repository;
 
 import com.practicas.ia_api.domain.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
-public interface IUserRepository {
-        boolean existsByEmail(String email);
-        boolean existsByUsername(String username);
-        User save(User user);
-        Optional<User> findByEmail(String email);
-        Optional<User> findById(String idUser);
-
+@Repository
+public interface IUserRepository extends JpaRepository<User, UUID> {
+    Optional<User> findByEmail(String email);
+    Optional<User> findByUserName(String userName);
+    boolean existsByEmail(String email);
+    boolean existsByUserName(String userName);
 }

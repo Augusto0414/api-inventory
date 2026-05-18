@@ -1,26 +1,26 @@
 package com.practicas.ia_api.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.validator.constraints.UUID;
+
+import java.util.UUID;
 
 @Table(name = "products")
 @Entity
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
     @Id
-    @UUID
+    @GeneratedValue(generator = "UUID")
     @UuidGenerator
     @Column(name = "id", updatable = false, nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -32,7 +32,7 @@ public class Product {
     private double price;
 
     @Column(name = "sku", nullable = false, unique = true)
-    private String sku;
+    private Integer sku;
 
     @Column(name = "category")
     private String category;
